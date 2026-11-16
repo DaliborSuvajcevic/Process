@@ -1,16 +1,16 @@
 :root{--bg:#111111;--card:#181818;--bd:#2c2b28;--tx:#F7F3EA;--mut:#a39d8f;--ac:#FFB132;--bad:#e5877c;--warn:#FFB132;--fld:#141414;--btn:#1f1e1c;--btnh:#2a2824;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0px)}
 header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
 .brand{display:flex;align-items:center;gap:10px}
 .brand img{height:30px;width:30px;object-fit:contain;display:block}
-.logo{letter-spacing:.32em;font-size:13px}
+.logo{font-family:"Playfair Display",Georgia,serif;letter-spacing:.18em;font-size:14px;font-weight:600}
 nav{display:flex;gap:2px}
 nav a{color:var(--mut);text-decoration:none;padding:6px 12px;border-radius:8px;font-size:14px;transition:.15s}
 nav a:hover{color:var(--tx);background:var(--card)}
 nav a.on{color:var(--ac);background:var(--card)}
 main{max-width:880px;margin:0 auto;padding:28px 20px 100px;display:grid;gap:16px}
-h1{font-size:26px;font-weight:600;margin:0;letter-spacing:-.01em}
+h1{font-family:"Playfair Display",Georgia,serif;font-size:26px;font-weight:600;margin:0;letter-spacing:0}
 h1::first-letter{text-transform:uppercase}
 h2{font-size:15px;font-weight:600;margin:0}
 h3{font-size:13px;color:var(--mut);margin:16px 0 4px;font-weight:600}
