@@ -75,3 +75,8 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
  .today{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Završi dan */
+button.primary{background:var(--ac);color:#111111;border-color:var(--ac);font-weight:600}
+button.primary:hover{filter:brightness(.95);background:var(--ac)}
+.done-tag{border-color:var(--ac);color:var(--ac)}

@@ -85,7 +85,7 @@ function day(){
  tmp=S.days[V.k]?null:mk(V.k);
  const d=cur(),past=V.k<TODAY,lock=past&&!V.unlock,s=S.days[V.k]?L[st(V.k)]:L.new;
  return `<div class=row><a class=ghost href="#hist" aria-label="Nazad na istoriju">←</a><h1>${fd(V.k,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</h1></div>
- <div class=row style="justify-content:flex-start"><span class=tag>${s}</span>${past?(lock?'<span class=tag>Zaključan istorijski zapis</span><button data-a=unlock>Uredi</button>':'<span class=tag>Uređivanje</span>'):''}</div>
+ <div class=row style="justify-content:flex-start"><span class=tag>${s}</span>${d.reviewDone?'<span class="tag done-tag">Dan završen</span>':''}${past?(lock?'<span class=tag>Zaključan istorijski zapis</span><button data-a=unlock>Uredi</button>':'<span class=tag>Uređivanje</span>'):''}</div>
  <fieldset ${lock?'disabled':''}>
  <section class=card><div class=row><h2>Zadaci</h2><span>${done(d)}/${d.tasks.length} · ${Math.round(pct(d))}%</span></div><div class=bar><i style="width:${pct(d)}%"></i></div>
   <div>${d.tasks.map(taskRow).join('')}</div>
@@ -94,6 +94,7 @@ function day(){
  <section class=card><h2>Dnevni review</h2>${Q.map(([k,q])=>TA('review.'+k,d.review[k],q)).join('')}
   <div class=fields>${SL.map(([k,l])=>`<label>${l}<output>${d[k]||'-'}</output><input type=range min=0 max=10 data-f=${k} value=${d[k]||0}></label>`).join('')}</div>
   <div class=sum><div><small>Ocena procesa</small><b id=sc>${score(d,V.k)}</b></div></div>
+  <button class="${d.reviewDone?'ghost':'primary'}" data-a=closeday style="width:100%;margin-top:12px">${d.reviewDone?'Otvori dan ponovo':'Završi dan'}</button>
   <p class=mut>Ocena procesa nije mera moje vrednosti niti uspeha. To je samo pokazatelj kvaliteta izvršenja procesa. Raspoloženje, energija, disciplina i fokus (od 1 do 10, nula znači bez unosa) služe samo za praćenje obrazaca, ne za osuđivanje. Formula: zadaci 50%, disciplina 20%, fokus 10%, review 10%, doslednost u poslednjih 7 dana 10%.</p></section>
  </fieldset>`}
 
@@ -190,6 +191,7 @@ document.addEventListener('click',e=>{
   del:()=>ask('Obrisati ovaj zadatak iz tog dana?',()=>mut(d=>d.tasks.splice(i,1))),
   addtask:()=>{const n=$('#nt').value.trim();n&&mut(d=>d.tasks.push({id:Date.now(),name:n,cat:$('#nc').value.trim(),prio:2,status:'todo',dur:'',note:''}),true)},
   skipday:()=>mut(d=>d.skipped=!d.skipped,true),
+  closeday:()=>{mut(d=>d.reviewDone=!d.reviewDone,true);toast(S.days[V.k].reviewDone?'Dan je završen':'Dan je ponovo otvoren')},
   unlock:()=>{V.unlock=true;re()},
   exp:exportData,
   imp:()=>$('#imp').click(),
