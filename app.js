@@ -91,7 +91,7 @@ function day(){
  <section class=card><div class=row><h2>Zadaci</h2><span>${done(d)}/${d.tasks.length} · ${Math.round(pct(d))}%</span></div><div class=bar><i style="width:${pct(d)}%"></i></div>
   <div>${d.tasks.map(taskRow).join('')}</div>
   <div class=row style="flex-wrap:nowrap"><input id=nt placeholder="Novi zadatak" style="flex:2"><input id=nc placeholder=Kategorija style="flex:1"><button data-a=addtask>Dodaj</button></div>
-  <button class=ghost data-a=skipday>${d.skipped?'Ukloni oznaku „preskočen“':'Označi dan kao preskočen'}</button></section>
+  <div class=row style="justify-content:flex-start;gap:8px"><button class=ghost data-a=skipday>${d.skipped?'Ukloni oznaku „preskočen“':'Označi dan kao preskočen'}</button>${S.days[V.k]?'<button class="ghost danger" data-a=delday>Obriši dan</button>':''}</div></section>
  <section class=card><h2>Dnevni review</h2>${Q.map(([k,q])=>TA('review.'+k,d.review[k],q)).join('')}
   <div class=fields>${SL.map(([k,l])=>`<label>${l}<output>${d[k]||'-'}</output><input type=range min=0 max=10 data-f=${k} value=${d[k]||0}></label>`).join('')}</div>
   <div class=sum><div><small>Ocena procesa</small><b id=sc>${score(d,V.k)}</b></div></div>
@@ -192,6 +192,7 @@ document.addEventListener('click',e=>{
   del:()=>ask('Obrisati ovaj zadatak iz tog dana?',()=>mut(d=>d.tasks.splice(i,1))),
   addtask:()=>{const n=$('#nt').value.trim();n&&mut(d=>d.tasks.push({id:Date.now(),name:n,cat:$('#nc').value.trim(),prio:2,status:'todo',dur:'',note:''}),true)},
   skipday:()=>mut(d=>d.skipped=!d.skipped,true),
+  delday:()=>ask('Obrisati ceo ovaj dan? Brišu se zadaci, review i ocene za taj datum. Ovo ne može da se vrati.',()=>{const k=V.k;try{localStorage.removeItem(P+'day:'+k)}catch(e){}delete S.days[k];V.unlock=false;toast('Dan je obrisan');if(k===TODAY)re();else location.hash='hist'},'Obriši dan'),
   closeday:()=>{mut(d=>d.reviewDone=!d.reviewDone,true);toast(S.days[V.k].reviewDone?'Dan je završen':'Dan je ponovo otvoren')},
   unlock:()=>{V.unlock=true;re()},
   exp:exportData,
