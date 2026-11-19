@@ -19,7 +19,8 @@ const NAV=[['dash','Pregled'],['day','Danas'],['hist','Istorija'],['stats','Anal
 const Q=[['good','Šta sam danas uradio dobro?'],['better','Šta sam mogao bolje?'],['learned','Šta sam danas naučio?'],['distract','Šta mi je odvlačilo pažnju?'],['next','Koji je jedan konkretan korak za sutra?']];
 const SL=[['mood','Raspoloženje'],['energy','Energija'],['discipline','Disciplina'],['focus','Fokus']];
 const EMPTY_REVIEW={good:'',better:'',learned:'',distract:'',next:''};
-const DEF_SET={minDay:70,template:[{name:'Trading analiza',cat:'Trading'},{name:'Journal',cat:'Trading'},{name:'Backtesting',cat:'Trading'},{name:'Trening',cat:'Zdravlje'},{name:'Rad na projektu',cat:'Rad'},{name:'Čitanje / edukacija',cat:'Učenje'}]};
+/* Dan počinje bez zadataka; standardne zadatke korisnik može sam da upiše u Podacima. */
+const DEF_SET={minDay:70,template:[]};
 
 let S={settings:structuredClone(DEF_SET),days:{}};
 let V={v:'dash',k:TODAY,unlock:false},tmp=null;
