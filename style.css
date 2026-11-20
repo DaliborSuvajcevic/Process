@@ -80,3 +80,20 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 button.primary{background:var(--ac);color:#111111;border-color:var(--ac);font-weight:600}
 button.primary:hover{filter:brightness(.95);background:var(--ac)}
 .done-tag{border-color:var(--ac);color:var(--ac)}
+
+/* Svetla tema: prati izbor iz aplikacije The Golden Circle (html[data-theme=light]) */
+html[data-theme="light"]{--bg:#F7F3EA;--card:#FFFFFF;--bd:#E4DCCB;--tx:#111111;--mut:#5E584E;--ac:#FFB132;--bad:#B23B1E;--warn:#8A5A00;--fld:#FFFFFF;--btn:#EFE8DA;--btnh:#E6DDCB;color-scheme:light}
+html[data-theme="light"] nav a.on{color:#8A5A00}
+html[data-theme="light"] .bar{background:#E4DCCB}
+html[data-theme="light"] .bars i{background:#E4DCCB}
+html[data-theme="light"] .bars i.done{background:var(--ac)}
+html[data-theme="light"] .bars i.prog{background:#E9C27A}
+html[data-theme="light"] .bars i.skip{background:#CFC6B3}
+html[data-theme="light"] .heat i{background:#EFE8DA}
+html[data-theme="light"] .heat i[data-l="1"]{background:#F6E2B8}
+html[data-theme="light"] .heat i[data-l="2"]{background:#F2CD84}
+html[data-theme="light"] .heat i[data-l="3"]{background:#F0B957}
+html[data-theme="light"] .heat i[data-l="4"]{background:var(--ac)}
+html[data-theme="light"] .heat i[data-l=s]{background:#CFC6B3}
+html[data-theme="light"] dialog::backdrop{background:rgba(17,17,17,.35)}
+html[data-theme="light"] .done-tag{color:#8A5A00}
