@@ -9,7 +9,8 @@ Objavljeno na GitHub Pages: https://daliborsuvajcevic.github.io/Process/
 - `index.html`: osnova stranice
 - `app.js`: sva logika (zadaci, review, istorija, analitika, izvoz i uvoz)
 - `style.css`: izgled (crna #111111, zlatna #FFB132, krem #F7F3EA)
-- `assets/crown.png`: originalna zlatna kruna, nepromenjena
+- `assets/crown.png`: kruna iz zvaničnog logoa The Golden Circle (linijska kruna, od 23. novembra 2026)
+- `assets/apple-touch-icon.png`: ikonica za početni ekran telefona
 
 ## Podaci
 
