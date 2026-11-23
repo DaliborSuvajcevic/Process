@@ -97,3 +97,7 @@ html[data-theme="light"] .heat i[data-l="4"]{background:var(--ac)}
 html[data-theme="light"] .heat i[data-l=s]{background:#CFC6B3}
 html[data-theme="light"] dialog::backdrop{background:rgba(17,17,17,.35)}
 html[data-theme="light"] .done-tag{color:#8A5A00}
+
+/* Ugrađeno u aplikaciju: zaglavlje se lepi uz sam vrh, bez razmaka za statusnu traku */
+html.embedded body{padding-top:0}
+html.embedded header{top:0}

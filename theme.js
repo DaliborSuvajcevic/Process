@@ -9,5 +9,7 @@
     if (m) m.setAttribute('content', t === 'light' ? '#F7F3EA' : '#111111');
   }
   apply();
+  // Unutar aplikacije The Golden Circle (iframe) nema sistemske trake na vrhu.
+  try { if (window.top !== window.self) document.documentElement.classList.add('embedded'); } catch (e) { document.documentElement.classList.add('embedded'); }
   window.addEventListener('storage', function (e) { if (e.key === 'gc:v1') apply(); });
 })();
